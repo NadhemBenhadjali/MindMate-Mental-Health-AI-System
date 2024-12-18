@@ -33,6 +33,30 @@ This notebook covers the fine-tuning process of the **LLaMA 3-8B Chat** model us
    - Mixed Precision: `fp16=True`, `bf16=False`
    - LoRA Configuration: `lora_alpha=16`, `r=8`, `lora_dropout=0.1`
    - Scheduler: Constant learning rate
+**Training Observations**
+
+The model was fine-tuned using an NVIDIA P100 GPU on Kaggle for a duration of three hours. Training loss improved significantly over time, indicating effective learning. Key observations include:
+
+- **Initial loss:** ~2.66  
+- **Final loss:** ~0.87  
+- The loss steadily decreased, with notable improvement after ~700 steps and stabilization after ~4000 steps.
+
+**Training Steps and Loss**
+
+| Step | Training Loss |
+|------|---------------|
+| 100  | 2.664700      |
+| 200  | 2.395100      |
+| 300  | 2.333700      |
+| 400  | 2.139800      |
+| 500  | 2.075500      |
+| 600  | 2.002000      |
+| 700  | 1.966200      |
+| 800  | 1.922300      |
+| 900  | 1.977200      |
+| ...  | ...           |
+| 6200 | 0.868600      |
+
 
 **Fine-tuned weights** and the notebook can be **directly loaded from Kaggle**.
 
