@@ -59,8 +59,9 @@ It includes detailed testing with sample conversations and prompt strategies.
 
 ## Quick Access on Kaggle
 Both notebooks and the fine-tuned model weights are available on Kaggle for direct use:
-- [LLaMA 3-8B Fine-Tuning Notebook](#)
-- [Fine-tuned Model Weights](#)
+- [LLaMA 3-8B Fine-Tuning Notebook](https://www.kaggle.com/code/nadhembenhadjali/llama-3-8b-chat-hf-finetuning)
+- [Fine-tuned Model Weights](https://www.kaggle.com/models/nadhembenhadjali/mindmate)
+- [mindmate-testing-and-prompt-engineering.ipynb](https://www.kaggle.com/code/nadhembenhadjali/mindmate-testing-and-prompt-engineering)
 
 To use them directly:
 1. Go to Kaggle and open the notebook.
