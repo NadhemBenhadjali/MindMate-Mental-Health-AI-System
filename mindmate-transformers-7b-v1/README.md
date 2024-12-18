@@ -1,202 +1,184 @@
----
-base_model: /kaggle/input/llama-3/transformers/8b-chat-hf/1
-library_name: peft
----
+Model Card for Mental Health Fine-Tuned LLM
 
-# Model Card for Model ID
+Model Details
 
-<!-- Provide a quick summary of what the model is/does. -->
+Model Description
 
+This model is a fine-tuned version of a large language model, specifically adapted for applications in mental health and psychotherapy. Leveraging the PEFT (Parameter-Efficient Fine-Tuning) library, this model is designed to assist in text generation tasks, such as answering user queries, providing suggestions, and generating therapeutic responses. It was fine-tuned using datasets relevant to mental health conversations to enhance its applicability in this domain.
 
+Language(s): English
 
-## Model Details
+License: MIT
 
-### Model Description
+Fine-tuned from model: Llama 3 8B Chat
 
-<!-- Provide a longer summary of what this model is. -->
+Uses
 
+Direct Use
 
+This model is intended for:
 
-- **Developed by:** [More Information Needed]
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
+Assisting mental health professionals with preliminary insights based on user queries.
 
-### Model Sources [optional]
+Providing information and psychoeducational support to users seeking guidance.
 
-<!-- Provide the basic links for the model. -->
+Serving as a chatbot for mental health applications to simulate supportive conversations.
 
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
+Downstream Use
 
-## Uses
+Fine-tuning for specific mental health sub-domains or disorders.
 
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
+Integration into digital therapeutics or self-help platforms.
 
-### Direct Use
+Out-of-Scope Use
 
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+Providing clinical diagnosis or treatment without supervision by a qualified mental health professional.
 
-[More Information Needed]
+Use cases that may involve malicious manipulation or exploitation of vulnerable users.
 
-### Downstream Use [optional]
+Bias, Risks, and Limitations
 
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
+Risks
 
-[More Information Needed]
+Potential for reinforcing biases present in the training data.
 
-### Out-of-Scope Use
+Recommendations
 
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
+Always have responses reviewed by a licensed mental health professional before deployment.
 
-[More Information Needed]
+Use the model as a supplementary tool, not as a replacement for human expertise.
 
-## Bias, Risks, and Limitations
+How to Get Started with the Model
 
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
+Use the following code snippet to begin using the model:
 
-[More Information Needed]
+from transformers import pipeline
 
-### Recommendations
+# Load the fine-tuned model
+generator = pipeline("text-generation", model="/kaggle/input/llama-3/transformers/8b-chat-hf/1")
 
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
+# Example usage
+response = generator("I feel like I don't exist and my body is not my own.")
+print(response)
 
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
+Training Details
 
-## How to Get Started with the Model
+Training Data
 
-Use the code below to get started with the model.
+This model was fine-tuned on:
 
-[More Information Needed]
+mpingale/mental-health-chat-dataset
 
-## Training Details
+Amod/mental_health_counseling_conversations
 
-### Training Data
+heliosbrahma/mental_health_chatbot_dataset
 
-<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
+Training Procedure
 
-[More Information Needed]
+Preprocessing
 
-### Training Procedure
+Text cleaning to remove irrelevant or noisy data.
 
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
+Tokenization and preparation for the Llama architecture.
 
-#### Preprocessing [optional]
+Training Hyperparameters
 
-[More Information Needed]
+Learning rate: 5e-5
 
+Batch size: 16
 
-#### Training Hyperparameters
+Epochs: 3
 
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
+Optimizer: AdamW
 
-#### Speeds, Sizes, Times [optional]
+Mixed Precision: FP16
 
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
+Training Observations
 
-[More Information Needed]
+The model was fine-tuned using an NVIDIA P100 GPU on Kaggle for a duration of three hours. Training loss improved significantly over time, indicating effective learning. Key observations include:
 
-## Evaluation
+Initial loss: ~2.66
 
-<!-- This section describes the evaluation protocols and provides the results. -->
+Final loss: ~0.87
 
-### Testing Data, Factors & Metrics
+The loss steadily decreased, with notable improvement after ~700 steps and stabilization after ~4000 steps.
 
-#### Testing Data
+Minor fluctuations in loss were observed but are within the expected range for such training processes.
 
-<!-- This should link to a Dataset Card if possible. -->
+Training Steps and Loss:
 
-[More Information Needed]
+Step
 
-#### Factors
+Training Loss
 
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
+100
 
-[More Information Needed]
+2.664700
 
-#### Metrics
+200
 
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
+2.395100
 
-[More Information Needed]
+300
 
-### Results
+2.333700
 
-[More Information Needed]
+400
 
-#### Summary
+2.139800
 
+...
 
+...
 
-## Model Examination [optional]
+6200
 
-<!-- Relevant interpretability work for the model goes here -->
+0.868600
 
-[More Information Needed]
+This progression suggests that the model is close to convergence, with steady improvements over the training period.
 
-## Environmental Impact
+Environmental Impact
 
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
+Carbon emissions can be estimated using the Machine Learning Impact calculator.
 
-Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
+Hardware Type: NVIDIA A100 GPUs
 
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
+Hours used: [More Information Needed]
 
-## Technical Specifications [optional]
+Cloud Provider: [More Information Needed]
 
-### Model Architecture and Objective
+Compute Region: [More Information Needed]
 
-[More Information Needed]
+Carbon Emitted: [More Information Needed]
 
-### Compute Infrastructure
+Technical Specifications
 
-[More Information Needed]
+Model Architecture and Objective
 
-#### Hardware
+Base Model: Llama 3 8B Chat
 
-[More Information Needed]
+Objective: Causal Language Modeling
 
-#### Software
+Compute Infrastructure
 
-[More Information Needed]
+Hardware: NVIDIA A100 GPUs
 
-## Citation [optional]
+Software: PyTorch, PEFT 0.13.2
 
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
+Citation
 
-**BibTeX:**
+@misc{mental_health_llm,
+  author = {Your Name},
+  title = {Mental Health Fine-Tuned LLM},
+  year = {2024},
+  howpublished = {\url{https://github.com/your-repo-link}}
+}
 
-[More Information Needed]
+Model Card Contact
 
-**APA:**
+For questions or feedback, please contact [Your Contact Information].
 
-[More Information Needed]
+Framework versions
 
-## Glossary [optional]
+PEFT 0.13.2
 
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
-
-[More Information Needed]
-
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
-### Framework versions
-
-- PEFT 0.13.2
