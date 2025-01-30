@@ -1,5 +1,8 @@
 # LLaMA 3-8B Chat: Fine-Tuning and Testing
+# Mindmate Website Repository
 
+This repository contains the source code for the **Mindmate Website**.
+📂 **Repository Link:** [AY00Z/EMBS-Challenge](https://github.com/AY00Z/EMBS-Challenge)
 ## Introduction to LLaMA 3-8B Chat
 The **LLaMA 3-8B Chat** model is a powerful, open-weight large language model (LLM) developed to provide exceptional conversational AI capabilities. With 8 billion parameters, it strikes a balance between performance and resource efficiency, making it ideal for fine-tuning and deployment across various applications.
 
