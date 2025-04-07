@@ -1,4 +1,4 @@
-# LLaMA 3-8B Chat: Fine-Tuning and Testing
+# MindMate: Fine-Tuning and Testing
 # Mindmate Website Repository
 
 This repository contains the source code for the **Mindmate Website**.
